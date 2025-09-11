@@ -1,0 +1,54 @@
+package basics
+
+import (
+	"fmt"
+)
+
+func main() {
+
+	//Simple loop
+	for i := range 5 {
+		fmt.Println("Iteration:", i)
+	}
+
+	//Iterate over collection
+	numbers := []int{1, 2, 3, 4, 5}
+	for index, value := range numbers {
+		fmt.Printf("Index: %v, Value: %v\n", index, value)
+	}
+
+	for i := 1; i <= 10; i++ {
+		if i%2 == 0 {
+			fmt.Println("Even number:", i)
+		} else {
+			fmt.Println("Odd number:", i)
+		}
+
+		if i == 5 {
+			fmt.Println("QUE MIEDO, UN 5, ME MUERO")
+			break
+		}
+	}
+
+	// Star pyramid
+	rows := 5
+	//Outer loop
+	for i := 0; i < rows; i++ {
+		//Inner loop
+		for j := 0; j < rows-i-1; j++ {
+			fmt.Print(" ")
+		}
+		//Stars
+		for k := 0; k < 2*i-1; k++ {
+			fmt.Print("*")
+		}
+		fmt.Println()
+	}
+
+	countdown := 10
+	for i := range countdown {
+		fmt.Println(countdown - i)
+
+	}
+	fmt.Println("Liftoff!")
+}
