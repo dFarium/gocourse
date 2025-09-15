@@ -1,0 +1,14 @@
+package gocourse
+
+import (
+	"fmt"
+	"os"
+)
+
+
+func main() {
+	defer fmt.Println("Deferred call in main")
+	fmt.Println("OS Exit")
+	os.Exit(500)
+	fmt.Println("This line will not be executed")
+}

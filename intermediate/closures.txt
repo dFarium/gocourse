@@ -1,0 +1,25 @@
+package intermediate
+
+import "fmt"
+
+func main() {
+
+	suma := func() func(int) int {
+		count := 99
+		// Cuando se llama a mish(), se devuelve una función que "recuerda" el valor de count
+		//  se puede llamar a esta nueva funcion con el nombre de la variable que la contiene
+		return func(x int) int {
+			count += x
+			return count 
+		}
+	}() // Llamada inmediata a la función anónima que devuelve otra función
+
+	// Ahora mish es una función que toma un int y devuelve un int
+	// Podemos llamar a esta función varias veces, y cada vez recordará el valor actualizado de count
+	fmt.Println(suma(5))  // Imprime 104 (99 + 5)
+	fmt.Println(suma(10)) // Imprime 114 (104 + 10)
+	fmt.Println(suma(20)) // Imprime 134 (114 + 20)
+
+	closure := suma(10) // Llamada a mish(), que devuelve una función
+	fmt.Println(closure) // Imprime 109
+}
