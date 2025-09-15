@@ -8,7 +8,6 @@ import (
 func main() {
 	// Cual es mas rapido?
 	// Realizar pruebas de tiempo
-
 	start := time.Now()
 	fmt.Println("Factorial of 25 is:", recursivefactorial(25))
 	elapsed := time.Since(start)
