@@ -1,0 +1,38 @@
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+
+	fruitsMap := make(map[string]int)
+
+	fruitsMap["apple"] = 5
+	fruitsMap["banana"] = 3
+	fruitsMap["cherry"] = 7
+	fruitsMap["date"] = 2
+	fruitsMap["elderberry"] = 4
+	fruitsMap["fig"] = 6
+	fruitsMap["grape"] = 8
+
+	fmt.Println(fruitsMap)
+
+	// delete entry
+	delete(fruitsMap, "banana")
+	// delete all entries
+	//  clear(fruitsMap)
+
+	fmt.Println(fruitsMap)
+
+	value, exists := fruitsMap["banana"]
+	if exists {
+		fmt.Println("Banana value:", value)
+	} else {
+		fmt.Println("Banana not found", value)
+	}
+
+	for _, value := range fruitsMap {
+		fmt.Printf("Value: %d\n", value)
+	}
+}

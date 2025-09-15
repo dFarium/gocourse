@@ -1,0 +1,29 @@
+package basics
+
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
+
+func main() {
+	source := rand.NewSource(time.Now().UnixNano())
+	random := rand.New(source)
+	var guess int
+	secretNumber := random.Intn(100) + 1
+
+	fmt.Println("WELCOME TO THE GUESSING GAME")
+	fmt.Println("Guess a number between 1 and 100")
+
+	for guess != secretNumber {
+		fmt.Scan(&guess)
+
+		if guess < secretNumber {
+			fmt.Println("Too low! Try again.")
+		} else if guess > secretNumber {
+			fmt.Println("Too high! Try again.")
+		} else {
+			fmt.Println("Congratulations! You've guessed the number!")
+		}
+	}
+}

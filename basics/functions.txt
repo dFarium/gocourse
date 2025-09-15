@@ -1,0 +1,23 @@
+package gocourse
+
+import "fmt"
+
+
+func main() {
+	// This is a placeholder main function.
+	fmt.Println("Welcome.")
+
+	a,b := 10, 3
+	quotient, remainder := divide(a, b)
+
+	fmt.Printf("Dividing %d by %d gives quotient %d and remainder %d\n", a, b, quotient, remainder)
+}
+
+//This function divides two integers and returns the result, with the remainder.
+func divide(a int, b int) (int, int) {
+	if b == 0 {
+		// Handle division by zero
+		return 0, 0
+	}
+	return a / b, a % b
+}

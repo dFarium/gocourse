@@ -1,0 +1,33 @@
+package basics
+
+import "fmt"
+
+func main() {
+	// for loop
+	for i := 0; i < 10; i++ {
+		fmt.Println(i)
+	}
+
+	fmt.Println("-----")
+
+	// while loop
+	j := 0
+	for j < 10 {
+		fmt.Println(j)
+		j++
+	}
+
+	//Show 10 odd numbers
+	fmt.Println("-----")
+
+	oddCount := 0
+	number := 0
+	for oddCount < 10 {
+		if number%2 != 0 {
+			fmt.Println(number)
+			oddCount++
+		}
+		number++
+	}
+
+}
