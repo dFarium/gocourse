@@ -1,0 +1,90 @@
+package gocourse
+
+import (
+	"fmt"
+	"sort"
+)
+
+func main() {
+	npc := NPC{
+		Name:   "Goblin",
+		Health: 100,
+		Weapon: Weapon{
+			Name:   "Dagger",
+			Damage: 15,
+		},
+	}
+
+	npc2 := NPC{
+		Name:   "Orc",
+		Health: 150,
+		Weapon: Weapon{
+			Name:   "Axe",
+			Damage: 25,
+		},
+	}
+
+	// Crear arreglo de NPCs
+	npcs := make([]NPC, 0)
+
+	npcs = append(npcs, npc, npc2)
+
+	// Agregar nuevo NPC al arreglo
+	npcs = append(npcs, NPC{
+		Name:   "Troll",
+		Health: 200,
+		Weapon: Weapon{
+			Name:   "Club",
+			Damage: 30,
+		},
+	})
+
+	// Ordenar por nombre alfabéticamente usando sort.Slice
+	sort.Slice(npcs, func(i, j int) bool {
+		return npcs[i].Name < npcs[j].Name
+	})
+	
+
+
+	// Imprimir detalles de cada NPC
+	for _, n := range npcs {
+		fmt.Printf("Name: %s, Health: %d, Weapon: %s, Damage: %d\n", n.Name, n.Health, n.Weapon.Name, n.Weapon.Damage)
+		n.Speak()
+	}
+
+	fmt.Println("Current health of NPCs:")
+	for _, n := range npcs {
+		fmt.Printf("%s: %d health\n", n.Name, n.Health)
+	}
+	// Simular daño a un NPC
+	npcs[0].TakeDamage(20)
+	fmt.Printf("After taking damage, %s has %d health left.\n", npcs[0].Name, npcs[0].Health)
+	fmt.Println(npcs[0].GetSummary())
+}
+
+type NPC struct {
+	Name   string
+	Health int
+	Weapon Weapon
+}
+
+type Weapon struct {
+	Name   string
+	Damage int
+}
+
+
+func (n NPC) Speak() {
+	fmt.Printf("%s says: Grrr!\n", n.Name)
+}
+
+func (n *NPC) TakeDamage(damage int) {
+	n.Health -= damage
+	if n.Health < 0 {
+		n.Health = 0
+	}
+}
+
+func (n NPC) GetSummary() string {
+	return fmt.Sprintf("NPC %s has %d health and %d attack power.", n.Name, n.Health, n.Weapon.Damage)
+}

@@ -1,0 +1,24 @@
+package main
+
+import "net/url"
+
+func main() {
+
+	values := url.Values{}
+
+	values.Add("game", "chess")
+	values.Add("level", "beginner")
+	values.Add("ELO", "1200")
+	values.Add("time", "10min")
+	values.Add("type", "blitz")
+
+	newUrl := url.URL{
+		Scheme:   "https",
+		Host:     "example.com",
+		Path:     "path",
+		RawQuery: values.Encode(),
+		Fragment: "section1",
+	}
+
+	println(newUrl.String())
+}

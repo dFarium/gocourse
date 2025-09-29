@@ -1,0 +1,33 @@
+package main
+
+import (
+	"errors"
+	"fmt"
+)
+
+func sqrt(x float64) (float64, error) {
+	if x < 0 {
+		return 0, fmt.Errorf("cannot sqrt negative number: %v", x)
+	}
+	// implementation of square root calculation
+	return x * 0.5, nil // placeholder implementation
+}
+
+func main() {
+	// Initialized bytes slice
+	bytes := []byte{'a', 'b', 'c'}
+
+	if err := process(bytes); err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+
+	fmt.Println("PROCESSING DONE")
+}
+
+func process(data []byte) error {
+	if len(data) == 0 {
+		return errors.New("data cannot be empty")
+	}
+	return nil
+}

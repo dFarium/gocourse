@@ -1,0 +1,39 @@
+package gocourse
+
+import "fmt"
+
+type Rectangle struct {
+	width, height float64
+}
+
+type Shape struct{
+	Rectangle // Debe ser anonimo para heredar metodos
+}
+
+func (r Rectangle) Area() float64 {
+	return r.width * r.height
+}
+
+func (r *Rectangle) Scale(factor float64) {
+	r.width *= factor
+	r.height *= factor
+}
+
+func main() {
+	shape := Shape{Rectangle: Rectangle{width: 10, height: 9}}
+
+	
+	fmt.Println("Area:", shape.Area()) // Area: 90
+
+}
+
+
+type UserInt int
+
+func (u UserInt) IsEven() bool {
+	return u%2 == 0
+}
+
+func (UserInt) Info() string {
+	return "This is a user-defined integer type"
+}

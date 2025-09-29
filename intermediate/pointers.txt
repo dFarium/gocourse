@@ -1,0 +1,21 @@
+package gocourse
+
+
+import "fmt"
+
+func main() {
+	value := 58
+	normal := value
+	pointer := &value
+
+	fmt.Println("Original value:", value)
+	fmt.Println("Value of normal:", normal)
+	fmt.Println("Value of pointer:", *pointer)
+
+	value = 100
+
+	fmt.Println("After changing value to 100:")
+	fmt.Println("Original value:", value)
+	fmt.Println("Value of normal:", normal)
+	fmt.Println("Value of pointer:", *pointer)
+}

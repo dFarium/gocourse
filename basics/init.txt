@@ -1,4 +1,4 @@
-package main
+package gocourse
 
 // Se ejecutan en orden las funciones init antes de main
 func init () {

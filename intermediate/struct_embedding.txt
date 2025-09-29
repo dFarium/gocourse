@@ -1,0 +1,46 @@
+package main
+
+import "fmt"
+
+type person struct {
+	Name string
+	Age  int
+}
+
+type Employee struct {
+	// Embedding de person
+	person
+	EmployeeID string
+	Position   string
+}
+
+func (p person) Greet() string {
+	return "Hello, my name is " + p.Name + " and I am " + fmt.Sprint(p.Age) + " years old."
+}
+
+func (e Employee) Greet() string {
+	return e.Name + " is working as a " + e.Position + "."
+
+}
+
+func main() {
+	emp := Employee{
+		person: person{
+			Name: "Alice",
+			Age:  30,
+		},
+		EmployeeID: "E12345",
+		Position:   "Software Engineer",
+	}
+
+	// Accediendo a campos de Person directamente desde Employee
+	println("Name:", emp.Name)
+	println("Age:", emp.Age)
+	// Campos propios de Employee
+	println("Employee ID:", emp.EmployeeID)
+	println("Position:", emp.Position)
+
+	// Usando el método Greet de Person
+	// Ahora como existe un método Greet en Employee, este tiene prioridad
+	println(emp.Greet())
+}

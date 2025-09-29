@@ -1,0 +1,25 @@
+package main
+
+func main() {
+	// Unbuffered channel
+	// ch := make(chan int)
+	// go func(){
+	// 	ch <- 1
+	// }()
+
+	// receiver := <-ch
+	// println(receiver)
+
+
+
+	// Buffered channel
+	ch := make(chan int, 2)
+	ch <- 1
+	ch <- 2
+	// ch <- 3 // This would block since the buffer is full
+
+	receiver1 := <-ch
+	receiver2 := <-ch
+	println(receiver1)
+	println(receiver2)
+}

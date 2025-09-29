@@ -1,0 +1,39 @@
+package main
+
+import (
+	"fmt"
+	"math/rand"
+)
+
+func main(){
+	fmt.Println("Welcome to the Random Number Guessing Game!")
+	fmt.Println("1. Roll the dice")
+	fmt.Println("2. Exit")
+	fmt.Print("Enter your choice: ")
+
+	//User input
+	var choice int
+	_ ,err :=fmt.Scan(&choice)
+
+	if err != nil || (choice < 1 || choice > 2) {
+		fmt.Println("Invalid input. Please enter a number.")
+		return
+	}
+
+	//Game loop
+	for {
+		switch choice {
+		case 1:
+			fmt.Println("Rolling the dice...")
+			fmt.Println("You rolled:", rand.Intn(6)+1)
+		case 2:
+			fmt.Println("Exiting the game.")
+			return
+		default:
+			fmt.Println("Invalid choice. Please try again.")
+		}
+
+		fmt.Print("Enter your choice: ")
+		fmt.Scan(&choice)
+	}
+}

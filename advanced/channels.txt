@@ -1,0 +1,29 @@
+package main
+
+import "time"
+
+func main() {
+	numberVessel := make(chan int)
+	number := 10
+
+	go func() {
+		numberVessel <- number
+		numberVessel <- number + 1
+		numberVessel <- number + 2
+		numberVessel <- number + 3
+	}()
+
+
+	time.Sleep(time.Second)
+
+	time.Sleep(time.Millisecond)
+
+	time.Sleep(time.Microsecond)
+	time.Sleep(time.Nanosecond)
+
+	time.Sleep(time.Duration(1))
+
+	for i := range 4 {
+		println(i, <-numberVessel)
+	}
+}
